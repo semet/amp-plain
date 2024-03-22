@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html amp lang="en">
+   <head>
+      <meta charset="utf-8" />
+      <script async src="https://cdn.ampproject.org/v0.js"></script>
+      <title>i88</title>
+      <link
+         rel="canonical"
+         href="https://amp.dev/documentation/guides-and-tutorials/start/create/basic_markup/"
+      />
+      <script
+         async
+         custom-element="amp-base-carousel"
+         src="https://cdn.ampproject.org/v0/amp-base-carousel-0.1.js"
+      ></script>
+      <link
+         rel="icon"
+         type="image/png"
+         href="https://speed-engine.art/macho/favicon-macho.png"
+      />
+      <meta
+         name="viewport"
+         content="width=device-width,minimum-scale=1,initial-scale=1"
+      />
+      <link
+         href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
+         rel="stylesheet"
+      />
+      <style amp-boilerplate>
+         body {
+            -webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+            -moz-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+            -ms-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+            animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+         }
+         @-webkit-keyframes -amp-start {
+            from {
+               visibility: hidden;
+            }
+            to {
+               visibility: visible;
+            }
+         }
+         @-moz-keyframes -amp-start {
+            from {
+               visibility: hidden;
+            }
+            to {
+               visibility: visible;
+            }
+         }
+         @-ms-keyframes -amp-start {
+            from {
+               visibility: hidden;
+            }
+            to {
+               visibility: visible;
+            }
+         }
+         @-o-keyframes -amp-start {
+            from {
+               visibility: hidden;
+            }
+            to {
+               visibility: visible;
+            }
+         }
+         @keyframes -amp-start {
+            from {
+               visibility: hidden;
+            }
+            to {
+               visibility: visible;
+            }
+         }
+      </style>
+      <style amp-custom>
+         body {
+            font-family: Urbanist, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-image: url("https://speed-engine.com/other/hand-painted-watercolor-sky-cloud-background-with-pastel-colored_41066-3400.webp");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+         }
+         button {
+            all: unset;
+         }
+         header {
+            display: flex;
+            flex-direction: column;
+            position: sticky;
+            top: 0;
+            z-index: 99;
+         }
+         .header-top {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            height: 70px;
+            background-color: rgb(48, 14, 90);
+            position: relative;
+         }
+         .header-top svg {
+            position: absolute;
+            top: 50%;
+            right: 16px;
+            transform: translateY(-50%);
+            color: rgb(243, 159, 90);
+         }
+         .authentication {
+            display: flex;
+            gap: 12px;
+            justify-content: space-between;
+            padding: 12px;
+            background-color: rgb(77, 60, 119);
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+         }
+         .login {
+            background-color: rgb(186, 57, 182);
+            flex: 1;
+            color: azure;
+            padding: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+         }
+         .register {
+            background-color: rgb(255, 155, 84);
+            flex: 1;
+            color: azure;
+            padding: 19px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+         }
+         .announcement {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 4px 12px;
+            background-color: rgb(229, 0, 133);
+            font-size: 1rem;
+            line-height: 1.5rem;
+            font-weight: 600;
+            text-transform: capitalize;
+            font-weight: 400;
+         }
+         .announcement div {
+            width: 100%;
+            overflow: hidden;
+         }
+         .announcement div span {
+            display: inline-block;
+            white-space: nowrap;
+            color: azure;
+            animation: marquee 10s linear infinite;
+         }
+         .carousel {
+            box-shadow: 0px 4px 4px rgba(14, 13, 13, 0.1);
+         }
+         .payment {
+            display: flex;
+            flex-direction: column;
+            padding-inline: 12px;
+            padding-bottom: 12px;
+            background-color: rgb(139, 108, 192);
+         }
+         .payment h3 {
+            color: azure;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            text-align: center;
+         }
+         .payment-list-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+         }
+         .payment-list-item {
+            height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: end;
+            background-color: rgb(0, 197, 107);
+            border-radius: 3px;
+            overflow: hidden;
+         }
+         .payment-list-item amp-img {
+            width: 80%;
+            height: 100%;
+            background-color: white;
+         }
+
+         .provider {
+            display: flex;
+            flex-direction: column;
+            margin-top: 16px;
+            padding-inline: 12px;
+            padding-bottom: 12px;
+            background-color: rgb(139, 108, 192);
+         }
+         .provider-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+         }
+         .provider-header h3 {
+            color: azure;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+         }
+         .provider-header button {
+            display: flex;
+            color: azure;
+            align-items: center;
+            gap: 4px;
+            font-size: 12px;
+         }
+         .provider-list-container {
+            display: flex;
+            gap: 8px;
+
+            overflow-x: auto;
+            scrollbar-width: none;
+         }
+
+         .provider-list-item {
+            background-color: rgb(115, 35, 168);
+            border: 1px solid rgb(255, 144, 179);
+            border-radius: 5px;
+            overflow: hidden;
+            min-width: 74px;
+            height: 74px;
+         }
+         @keyframes marquee {
+            0% {
+               transform: translateX(100%);
+            } /* Start off-screen */
+            100% {
+               transform: translateX(-100%);
+            } /* Move to the left */
+         }
+      </style>
+
+      <noscript
+         ><style amp-boilerplate>
+            body {
+               -webkit-animation: none;
+               -moz-animation: none;
+               -ms-animation: none;
+               animation: none;
+            }
+         </style></noscript
+      >
+   </head>
+   <body>
+      <!-- header -->
+      <header>
+         <div class="header-top">
+            <amp-img
+               alt="A view of the sea"
+               src="https://speed-engine.art/macho/logo-macho-final-01.png"
+               width="265"
+               height="60"
+            >
+            </amp-img>
+            <!-- button -->
+            <svg
+               width="24"
+               height="24"
+               viewBox="0 0 24 24"
+               fill="none"
+               xmlns="http://www.w3.org/2000/svg"
+            >
+               <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M1.122 4.5c0-.69.454-1.25 1.015-1.25H21.64c.56 0 1.015.56 1.015 1.25S22.2 5.75 21.64 5.75H2.137c-.56 0-1.015-.56-1.015-1.25zM1.122 12c0-.69.454-1.25 1.015-1.25H21.64c.56 0 1.015.56 1.015 1.25s-.454 1.25-1.015 1.25H2.137c-.56 0-1.015-.56-1.015-1.25zM1.122 20c0-.69.454-1.25 1.015-1.25H21.64c.56 0 1.015.56 1.015 1.25s-.454 1.25-1.015 1.25H2.137c-.56 0-1.015-.56-1.015-1.25z"
+                  fill="currentColor"
+               ></path>
+            </svg>
+         </div>
+         <!-- Auth -->
+         <div class="authentication">
+            <button class="login">Masuk</button>
+            <button class="register">Daftar</button>
+         </div>
+      </header>
+
+      <!-- running text -->
+      <div class="announcement">
+         <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            class="mr-2"
+            style="color: rgb(48, 14, 90)"
+         >
+            <path
+               d="M20.179 10.958c0 2.164.002 4.33-.003 6.495-.001.188-.023.385-.081.563-.25.757-1.202 1.122-1.93.747-2.63-1.35-5.258-2.702-7.887-4.053-.277-.143-.551-.292-.834-.424-.125-.06-.174-.127-.174-.272.006-2.044.005-4.088.001-6.132 0-.121.033-.189.146-.246 2.93-1.492 5.858-2.99 8.79-4.482.925-.47 1.967.19 1.97 1.246.006 2.185.002 4.371.002 6.558zM8.356 8.001v5.9H3.494c-.939-.001-1.492-.556-1.493-1.497V9.487c.001-.926.559-1.485 1.483-1.486h4.872zM4.951 14.828c.096-.005.158-.01.22-.01 1.079-.001 2.157.003 3.235-.005.165-.001.23.052.273.208.313 1.126.636 2.249.956 3.372.286 1.01-.362 1.872-1.41 1.877-.22.001-.44.003-.66 0-.676-.013-1.173-.391-1.36-1.043-.357-1.238-.708-2.477-1.062-3.717-.063-.218-.123-.435-.192-.682zM21.084 9.467c.566.154.914.692.916 1.377.003.885-.296 1.419-.916 1.592V10.95 9.467z"
+               fill="currentColor"
+            ></path>
+         </svg>
+         <div>
+            <span>Selamat datang di i88</span>
+         </div>
+      </div>
+      <!-- carousel -->
+      <div class="carousel">
+         <amp-base-carousel
+            width="375"
+            height="250"
+            auto-advance="true"
+            snap-align="center"
+            layout="responsive"
+            loop="true"
+            visible-count="1"
+         >
+            <amp-img
+               src="https://speed-engine.art/macho/m_banner_rollingan.avif"
+               width="375"
+               height="250"
+               layout="responsive"
+            ></amp-img>
+            <amp-img
+               src="https://speed-engine.art/macho/m_banner_macho_3_ind.avif"
+               width="375"
+               height="250"
+               layout="responsive"
+            ></amp-img>
+            <amp-img
+               src="https://speed-engine.art/macho/m_banner_macho_3_ind.avif"
+               width="375"
+               height="250"
+               layout="responsive"
+            ></amp-img>
+         </amp-base-carousel>
+      </div>
+      <!-- Payment -->
+      <div class="payment">
+         <h3>Metode Pembayaran</h3>
+         <div class="payment-list-container">
+            <div class="payment-list-item">
+               <amp-img
+                  src="https://speed-engine.art/banks/cimb_va.svg"
+                  width="78"
+                  height="34"
+                  layout="responsive"
+               ></amp-img>
+            </div>
+            <div class="payment-list-item">
+               <amp-img
+                  src="https://speed-engine.art/banks/cimb_va.svg"
+                  width="78"
+                  height="34"
+                  layout="responsive"
+               ></amp-img>
+            </div>
+            <div class="payment-list-item">
+               <amp-img
+                  src="https://speed-engine.art/banks/cimb_va.svg"
+                  width="78"
+                  height="34"
+                  layout="responsive"
+               ></amp-img>
+            </div>
+            <div class="payment-list-item">
+               <amp-img
+                  src="https://speed-engine.art/banks/cimb_va.svg"
+                  width="78"
+                  height="34"
+                  layout="responsive"
+               ></amp-img>
+            </div>
+            <div class="payment-list-item">
+               <amp-img
+                  src="https://speed-engine.art/banks/cimb_va.svg"
+                  width="78"
+                  height="34"
+                  layout="responsive"
+               ></amp-img>
+            </div>
+            <div class="payment-list-item">
+               <amp-img
+                  src="https://speed-engine.art/banks/cimb_va.svg"
+                  width="78"
+                  height="34"
+                  layout="responsive"
+               ></amp-img>
+            </div>
+            <div class="payment-list-item">
+               <amp-img
+                  src="https://speed-engine.art/banks/cimb_va.svg"
+                  width="78"
+                  height="34"
+                  layout="responsive"
+               ></amp-img>
+            </div>
+            <div class="payment-list-item">
+               <amp-img
+                  src="https://speed-engine.art/banks/cimb_va.svg"
+                  width="78"
+                  height="34"
+                  layout="responsive"
+               ></amp-img>
+            </div>
+            <div class="payment-list-item">
+               <amp-img
+                  src="https://speed-engine.art/banks/cimb_va.svg"
+                  width="78"
+                  height="34"
+                  layout="responsive"
+               ></amp-img>
+            </div>
+         </div>
+      </div>
+      <!-- Provider -->
+      <div class="provider">
+         <div class="provider-header">
+            <h3>Penyedia Permainan</h3>
+            <button>
+               <span>Lihat Semua</span>
+               <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="ml-1"
+               >
+                  <g clip-path="url(#clip0_2028_43281)">
+                     <path
+                        d="M9.596 2.182A.613.613 0 0110.034 2c.165 0 .322.058.438.182L15.82 7.53c.24.24.24.636 0 .876l-5.414 5.414a.624.624 0 01-.876 0 .624.624 0 010-.876L13.874 8.6H.6a.6.6 0 110-1.2h13.338L9.596 3.058a.624.624 0 010-.876z"
+                        fill="currentColor"
+                     ></path>
+                  </g>
+                  <defs>
+                     <clipPath id="clip0_2028_43281">
+                        <path
+                           fill="#fff"
+                           transform="rotate(-180 8 8)"
+                           d="M0 0H16V16H0z"
+                        ></path>
+                     </clipPath>
+                  </defs>
+               </svg>
+            </button>
+         </div>
+         <div class="provider-list-container">
+            <div class="provider-list-item">
+               <amp-img
+                  src="https://speed-engine.com/provider/cmd368.png"
+                  width="74"
+                  height="74"
+                  layout="responsive"
+               ></amp-img>
+            </div>
+            <div class="provider-list-item">
+               <amp-img
+                  src="https://speed-engine.com/provider/cmd368.png"
+                  width="74"
+                  height="74"
+                  layout="responsive"
+               ></amp-img>
+            </div>
+            <div class="provider-list-item">
+               <amp-img
+                  src="https://speed-engine.com/provider/cmd368.png"
+                  width="74"
+                  height="74"
+                  layout="responsive"
+               ></amp-img>
+            </div>
+            <div class="provider-list-item">
+               <amp-img
+                  src="https://speed-engine.com/provider/cmd368.png"
+                  width="74"
+                  height="74"
+                  layout="responsive"
+               ></amp-img>
+            </div>
+            <div class="provider-list-item">
+               <amp-img
+                  src="https://speed-engine.com/provider/cmd368.png"
+                  width="74"
+                  height="74"
+                  layout="responsive"
+               ></amp-img>
+            </div>
+            <div class="provider-list-item">
+               <amp-img
+                  src="https://speed-engine.com/provider/cmd368.png"
+                  width="74"
+                  height="74"
+                  layout="responsive"
+               ></amp-img>
+            </div>
+            <div class="provider-list-item">
+               <amp-img
+                  src="https://speed-engine.com/provider/cmd368.png"
+                  width="74"
+                  height="74"
+                  layout="responsive"
+               ></amp-img>
+            </div>
+            <div class="provider-list-item">
+               <amp-img
+                  src="https://speed-engine.com/provider/cmd368.png"
+                  width="74"
+                  height="74"
+                  layout="responsive"
+               ></amp-img>
+            </div>
+            <div class="provider-list-item">
+               <amp-img
+                  src="https://speed-engine.com/provider/cmd368.png"
+                  width="74"
+                  height="74"
+                  layout="responsive"
+               ></amp-img>
+            </div>
+            <div class="provider-list-item">
+               <amp-img
+                  src="https://speed-engine.com/provider/cmd368.png"
+                  width="74"
+                  height="74"
+                  layout="responsive"
+               ></amp-img>
+            </div>
+            <div class="provider-list-item">
+               <amp-img
+                  src="https://speed-engine.com/provider/cmd368.png"
+                  width="74"
+                  height="74"
+                  layout="responsive"
+               ></amp-img>
+            </div>
+         </div>
+      </div>
+   </body>
+</html>
